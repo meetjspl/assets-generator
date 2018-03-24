@@ -11,13 +11,17 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/jest": "22.2.2",
     "@types/node": "9.6.0",
     "@types/react": "16.0.40",
     "@types/react-dom": "16.0.4",
+    "gh-pages": "1.1.0",
     "typescript": "2.7.2"
-  }
+  },
+  "homepage": "https://meetjspl.github.io/assets-generator"
 }
