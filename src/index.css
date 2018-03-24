@@ -17,6 +17,26 @@ body {
   font-style: normal;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 3rem;
+}
+
+.template-container {
+  padding: 25px 50px;
+  background: gray;
+}
+
+svg {
+  display: block;
+  margin: 0 auto;
+}
+
+
 /*
 %font-regular {
   font-family: 'Montserrat', sans-serif;
