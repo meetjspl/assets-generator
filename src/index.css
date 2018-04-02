@@ -15,11 +15,35 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-style: normal;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 .app-container {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.meta {
+  padding: 10px 20px;
+  display: flex;
   flex-direction: column;
+}
+
+.meta input,
+.meta textarea {
+  width: 100%;
+}
+
+.meta-label {
+  margin-bottom: 25px;
+}
+
+.meta-label-text {
+  display: block;
 }
 
 label {
@@ -35,7 +59,6 @@ svg {
   display: block;
   margin: 0 auto;
 }
-
 
 /*
 %font-regular {
