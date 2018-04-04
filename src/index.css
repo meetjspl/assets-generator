@@ -7,6 +7,13 @@
   --color-green: #bddb59;
 }
 
+@font-face {
+  font-family: 'choplinmedium-demo';
+  src: url('./assets/Choplin-Medium-DEMO-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-size: 62.5%;
 }

@@ -1,5 +1,9 @@
 // tslint:disable:semicolon
 import * as React from 'react';
+import { CityLogo } from './CityLogo';
+
+const CITIES = ['Białystok', 'Bielsko-Biała', 'Bydgoszcz', 'Gdańsk', 'Katowice',
+  'Kraków', 'Lublin', 'Łódź', 'Olsztyn', 'Poznań', 'Szczecin', 'Toruń', 'Warszawa', 'Wrocław'];
 
 type AppState = {
   title: string;
@@ -14,8 +18,9 @@ class App extends React.Component<{}, AppState> {
     description: '#javascript #front-end #meetup #networking  #najlepsimentorzy #jużwkrótce',
     hasSponsors: false,
     datetime: '2018-04-27T18:00',
-    city: 'Warszawa',
+    city: 'Toruń',
   };
+
   render() {
     return (
       <div className="app-container">
@@ -28,6 +33,12 @@ class App extends React.Component<{}, AppState> {
   private renderMeta() {
     return (
       <aside className="meta">
+        <label className="meta-label">
+          <span className="meta-label-text">City</span>
+          <select name="city" value={this.state.city} onChange={this.handleFieldChange}>
+            {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
+        </label>  
         <label className="meta-label">
           <span className="meta-label-text">Sponsorzy?</span>{' '}
           <input type="checkbox" onChange={this.handleSponsorsChange} />
@@ -73,6 +84,7 @@ class App extends React.Component<{}, AppState> {
           fillRule="evenodd"
           d="M579 192h152v52H579zm152-65h64v10h-64zm63 313h36v10h-36z"
         />
+        <CityLogo svgProps={{ width: '205px', height: '60px', x: '75px', y: '54px' }} city={this.state.city} />
         <path fill="none" stroke="#3a3349" strokeWidth="2" d="M-1 243h580" />
         {this.state.hasSponsors && (
           <path fill="#ffffff" fillRule="evenodd" d="M658 0h203v450H658z" />
@@ -115,13 +127,12 @@ class App extends React.Component<{}, AppState> {
     return ` ${day}.${month}.${year} // ${hour}:${minutes} `;
   }
 
-  private handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    // tslint:disable-next-line:no-console
+  private handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.currentTarget;
-    this.setState({
-      // tslint:disable-next-line:no-any
-      [name as any]: value,
-    });
+    const newState: Partial<AppState> = {
+      [name]: value
+    };
+    this.setState(state => Object.assign({}, state, newState));
   };
 
   private handleSponsorsChange = () => {
