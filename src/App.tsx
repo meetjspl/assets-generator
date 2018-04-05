@@ -15,7 +15,7 @@ type AppState = {
 class App extends React.Component<{}, AppState> {
   state = {
     title: 'meet.js Gdańsk #23',
-    description: '#javascript #front-end #meetup #networking  #najlepsimentorzy #jużwkrótce',
+    description: '#javascript #front-end #meetup #networking\n#najlepsimentorzy #jużwkrótce',
     hasSponsors: false,
     datetime: '2018-04-27T18:00',
     city: 'Toruń',
@@ -92,16 +92,7 @@ class App extends React.Component<{}, AppState> {
         <text fontFamily="Montserrat" fontWeight="700" y="227" x="97" fill="white" fontSize="34px">
           {this.state.title}
         </text>
-        <text
-          fontFamily="Montserrat"
-          fontWeight="400"
-          y="280"
-          x="97"
-          fill="#78909c"
-          fontSize="16px"
-        >
-          {this.state.description}
-        </text>
+        {this.renderDescription()}
         <text
           fontFamily="Montserrat"
           fontWeight="900"
@@ -115,6 +106,30 @@ class App extends React.Component<{}, AppState> {
         </text>
       </svg>
     );
+  }
+
+  private renderDescription() {
+    const lineHeight = 22;
+    const textSpans = this.state.description
+      .split('\n')
+      .map(t => t.trim() + ' ') // add whitespace for better experience when copying the text
+      .map((t, i) => (
+        <tspan x="97" dy={i * lineHeight} key={i}>
+          {t}
+        </tspan>
+      ))
+
+    return (
+      <text
+        fontFamily="Montserrat"
+        fontWeight="400"
+        y="280"
+        fill="#78909c"
+        fontSize="16px"
+      >
+        {textSpans}
+      </text>
+    )
   }
 
   private formatDate = (dateStr: string) => {
