@@ -31,10 +31,16 @@ body {
 .app-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  min-height: 100vh;
 }
 
 .meta {
+  flex: 0 0 400px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.meta-wrapper {
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
@@ -54,12 +60,13 @@ body {
 }
 
 label {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .template-container {
   padding: 25px 50px;
   background: gray;
+  flex: 1;
 }
 
 svg {
