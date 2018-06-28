@@ -1,13 +1,7 @@
 {
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
-  "prettier.parser": "typescript",
-  "prettier.printWidth": 100,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-  "prettier.arrowParens": "always",
   "[json]": {
-    "prettier.printWidth": 9999,
     "editor.formatOnSave": false,
     "editor.formatOnType": false
   },

@@ -1,9 +1,26 @@
 // tslint:disable:semicolon
 import * as React from 'react';
 import { CityLogo } from './CityLogo';
+import { MultilineText } from './MultilineText';
+import { formatDate } from './dateService';
+import Dropzone from 'react-dropzone';
 
-const CITIES = ['Białystok', 'Bielsko-Biała', 'Bydgoszcz', 'Gdańsk', 'Katowice',
-  'Kraków', 'Lublin', 'Łódź', 'Olsztyn', 'Poznań', 'Szczecin', 'Toruń', 'Warszawa', 'Wrocław'];
+const CITIES = [
+  'Białystok',
+  'Bielsko-Biała',
+  'Bydgoszcz',
+  'Gdańsk',
+  'Katowice',
+  'Kraków',
+  'Lublin',
+  'Łódź',
+  'Olsztyn',
+  'Poznań',
+  'Szczecin',
+  'Toruń',
+  'Warszawa',
+  'Wrocław',
+];
 
 type AppState = {
   title: string;
@@ -26,6 +43,16 @@ class App extends React.Component<{}, AppState> {
       <div className="app-container">
         {this.renderMeta()}
         <main className="template-container">{this.renderTemplate()}</main>
+        <Dropzone
+          accept="image/jpeg, image/png"
+          onDragEnter={}
+          onDragLeave={}
+          onDrop={() => {
+            /**/
+          }}
+        >
+          <p>Try dropping some files here, or click to select files to upload.</p>
+        </Dropzone>
       </div>
     );
   }
@@ -36,9 +63,13 @@ class App extends React.Component<{}, AppState> {
         <label className="meta-label">
           <span className="meta-label-text">City</span>
           <select name="city" value={this.state.city} onChange={this.handleFieldChange}>
-            {CITIES.map(c => <option key={c} value={c}>{c}</option>)}
+            {CITIES.map((c) => (
+              <option key={c} value={c}>
+                {c}
+              </option>
+            ))}
           </select>
-        </label>  
+        </label>
         <label className="meta-label">
           <span className="meta-label-text">Sponsorzy?</span>{' '}
           <input type="checkbox" onChange={this.handleSponsorsChange} />
@@ -84,7 +115,10 @@ class App extends React.Component<{}, AppState> {
           fillRule="evenodd"
           d="M579 192h152v52H579zm152-65h64v10h-64zm63 313h36v10h-36z"
         />
-        <CityLogo svgProps={{ width: '205px', height: '60px', x: '75px', y: '54px' }} city={this.state.city} />
+        <CityLogo
+          svgProps={{ width: '205px', height: '60px', x: '75px', y: '54px' }}
+          city={this.state.city}
+        />
         <path fill="none" stroke="#3a3349" strokeWidth="2" d="M-1 243h580" />
         {this.state.hasSponsors && (
           <path fill="#ffffff" fillRule="evenodd" d="M658 0h203v450H658z" />
@@ -102,52 +136,36 @@ class App extends React.Component<{}, AppState> {
           fontSize="16px"
           wordSpacing="1ex"
         >
-          {this.formatDate(this.state.datetime)} // {this.state.city}
+          {formatDate(this.state.datetime)} \/\/ {this.state.city}
         </text>
       </svg>
     );
   }
 
   private renderDescription() {
-    const lineHeight = 22;
-    const textSpans = this.state.description
-      .split('\n')
-      .map(t => t.trim() + ' ') // add whitespace for better experience when copying the text
-      .map((t, i) => (
-        <tspan x="97" dy={i * lineHeight} key={i}>
-          {t}
-        </tspan>
-      ))
-
     return (
-      <text
-        fontFamily="Montserrat"
-        fontWeight="400"
-        y="280"
-        fill="#78909c"
-        fontSize="16px"
-      >
-        {textSpans}
-      </text>
-    )
+      <MultilineText
+        text={this.state.description}
+        textProps={{
+          fontFamily: 'Montserrat',
+          fontWeight: '400',
+          y: '280',
+          fill: '#78909c',
+          fontSize: '16px',
+        }}
+        lineHeight={22}
+      />
+    );
   }
 
-  private formatDate = (dateStr: string) => {
-    const date = new Date(dateStr);
-    const year = String(date.getFullYear()).slice(2, 4);
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate());
-    const hour = String(date.getHours());
-    const minutes = String(date.getMinutes()).padStart(2, '0');
-    return ` ${day}.${month}.${year} // ${hour}:${minutes} `;
-  }
-
-  private handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  private handleFieldChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.currentTarget;
     const newState: Partial<AppState> = {
-      [name]: value
+      [name]: value,
     };
-    this.setState(state => Object.assign({}, state, newState));
+    this.setState((state) => Object.assign({}, state, newState));
   };
 
   private handleSponsorsChange = () => {
