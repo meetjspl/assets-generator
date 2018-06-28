@@ -28,7 +28,9 @@ type AppState = {
   hasSponsors: boolean;
   datetime: string;
   city: string;
+  customPlace: string;
 };
+
 class App extends React.Component<{}, AppState> {
   state = {
     title: 'meet.js Gdańsk #23',
@@ -36,6 +38,7 @@ class App extends React.Component<{}, AppState> {
     hasSponsors: false,
     datetime: '2018-04-27T18:00',
     city: 'Toruń',
+    customPlace: '',
   };
 
   render() {
@@ -45,8 +48,8 @@ class App extends React.Component<{}, AppState> {
         <main className="template-container">{this.renderTemplate()}</main>
         <Dropzone
           accept="image/jpeg, image/png"
-          onDragEnter={}
-          onDragLeave={}
+          // onDragEnter={}
+          // onDragLeave={}
           onDrop={() => {
             /**/
           }}
@@ -60,42 +63,53 @@ class App extends React.Component<{}, AppState> {
   private renderMeta() {
     return (
       <aside className="meta">
-        <label className="meta-label">
-          <span className="meta-label-text">City</span>
-          <select name="city" value={this.state.city} onChange={this.handleFieldChange}>
-            {CITIES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="meta-label">
-          <span className="meta-label-text">Sponsorzy?</span>{' '}
-          <input type="checkbox" onChange={this.handleSponsorsChange} />
-        </label>
-        <label className="meta-label">
-          <span className="meta-label-text">Tytuł</span>
-          <input onChange={this.handleFieldChange} value={this.state.title} name="title" />
-        </label>
-        <label className="meta-label">
-          <span className="meta-label-text">Hashtagi</span>
-          <textarea
-            rows={5}
-            onChange={this.handleFieldChange}
-            value={this.state.description}
-            name="description"
-          />
-        </label>
-        <label className="meta-label">
-          <span className="meta-label-text">Data i czas</span>
-          <input
-            type="datetime-local"
-            onChange={this.handleFieldChange}
-            value={this.state.datetime}
-            name="datetime"
-          />
-        </label>
+        <div className="meta-wrapper">
+          <label className="meta-label">
+            <span className="meta-label-text">City</span>
+            <select name="city" value={this.state.city} onChange={this.handleFieldChange}>
+              {CITIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="meta-label">
+            <span className="meta-label-text">Sponsorzy?</span>{' '}
+            <input type="checkbox" onChange={this.handleSponsorsChange} />
+          </label>
+          <label className="meta-label">
+            <span className="meta-label-text">Tytuł</span>
+            <input onChange={this.handleFieldChange} value={this.state.title} name="title" />
+          </label>
+          <label className="meta-label">
+            <span className="meta-label-text">Hashtagi</span>
+            <textarea
+              rows={5}
+              onChange={this.handleFieldChange}
+              value={this.state.description}
+              name="description"
+            />
+          </label>
+          <label className="meta-label">
+            <span className="meta-label-text">Data i czas</span>
+            <input
+              type="datetime-local"
+              onChange={this.handleFieldChange}
+              value={this.state.datetime}
+              name="datetime"
+            />
+          </label>
+          <label className="meta-label">
+            <span className="meta-label-text">Inne miejsce spotkania</span>
+            <input
+              placeholder="(domyślnie miasto)"
+              onChange={this.handleFieldChange}
+              value={this.state.customPlace}
+              name="customPlace"
+            />
+          </label>
+        </div>
       </aside>
     );
   }
@@ -136,10 +150,14 @@ class App extends React.Component<{}, AppState> {
           fontSize="16px"
           wordSpacing="1ex"
         >
-          {formatDate(this.state.datetime)} \/\/ {this.state.city}
+          {formatDate(this.state.datetime)} \/\/ {this.getPlaceText()}
         </text>
       </svg>
     );
+  }
+
+  private getPlaceText() {
+    return this.state.customPlace || this.state.city;
   }
 
   private renderDescription() {
