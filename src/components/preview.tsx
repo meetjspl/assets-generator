@@ -1,10 +1,21 @@
 import { Button } from '@/components/ui/button';
 import { MeetjsLogo } from '@/meetjs-logo';
+import { format } from 'date-fns';
 import html2canvas from 'html2canvas-pro';
 import { useRef } from 'react';
 
-export const Preview = () => {
+import type { EventData } from '@/types/event-data.ts';
+
+interface PreviewProps {
+	data: EventData;
+}
+
+export const Preview = ({
+	data: { title, date, time, location, sponsor },
+}: PreviewProps) => {
 	const ref = useRef<HTMLDivElement>(null);
+
+	const sponsorImageUrl = sponsor && URL.createObjectURL(sponsor);
 
 	return (
 		<>
@@ -20,7 +31,7 @@ export const Preview = () => {
 
 					const link = document.createElement('a');
 					link.href = dataURL;
-					link.download = 'event-name.png';
+					link.download = `${title}.png`;
 					link.click();
 				}}
 			>
@@ -33,11 +44,9 @@ export const Preview = () => {
 				>
 					<div className="relative col-span-3 bg-purple px-25 py-30">
 						<MeetjsLogo />
-						<h2 className="mt-10 text-4xl font-semibold text-white">
-							meet.js Wrocław 25.09
-						</h2>
+						<h2 className="mt-10 text-4xl font-semibold text-white">{title}</h2>
 						<p className="mt-20 text-xl font-bold text-green">
-							25.09.2025 // 18:00 // Pawła Włodkowica 5, 50-072 Wrocław
+							{date && format(date, 'dd.MM.yyyy')} // {time} // {location}
 						</p>
 						{/* DECORATIONS */}
 						<div className="absolute top-50 right-0 h-15 w-40 translate-x-1/2 bg-blue" />
@@ -50,13 +59,15 @@ export const Preview = () => {
 						<div className="absolute top-30 left-20 h-3 w-20 bg-blue" />
 						<div className="absolute right-10 bottom-30 h-80 w-2 bg-green" />
 						<div className="absolute bottom-16 left-18 h-35 w-2 bg-green" />
-						{/* <div className="relative flex h-full items-center justify-center bg-white">
-							<img
-								alt="Sponsor"
-								src="https://media.discordapp.net/attachments/1248918286549123229/1421241233686139121/airSlate-logo-transparent-bg.png?ex=68d8518b&is=68d7000b&hm=cf778ee2ecffa673c2e62b05e1735a4a9895d24b6fc8b4c76ad14e93dcdc864a&=&format=webp&quality=lossless"
-								className="object-cover"
-							/>
-						</div> */}
+						{sponsorImageUrl && (
+							<div className="relative flex h-full items-center justify-center bg-white">
+								<img
+									alt="Sponsor"
+									src={sponsorImageUrl}
+									className="object-cover"
+								/>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

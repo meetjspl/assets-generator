@@ -10,7 +10,7 @@ export const App = () => {
 	const [data, setData] = useState<EventData>({
 		city: 'wroclaw',
 		title: 'meet.js Wrocław 25.09',
-		isSponsor: false,
+		sponsor: null,
 		location: '',
 		date: new Date('2025-09-25'),
 		time: '18:00',
@@ -24,7 +24,7 @@ export const App = () => {
 				</h1>
 			</header>
 			<EventDataForm data={data} onDataChange={setData} />
-			<Preview />
+			<Preview data={data} />
 			<Footer />
 		</>
 	);

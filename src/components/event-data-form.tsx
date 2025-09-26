@@ -28,9 +28,9 @@ interface ContentFormProps {
 
 export const EventDataForm = ({ data, onDataChange }: ContentFormProps) => {
 	const [open, setOpen] = useState(false);
-
-	const getCityName = (city: string) =>
-		cities.find(c => c.value === city)?.label;
+	const [isSponsorSelected, setIsSponsorSelected] = useState<
+		boolean | 'indeterminate'
+	>(false);
 
 	return (
 		<section className="grid gap-2 p-4">
@@ -56,16 +56,23 @@ export const EventDataForm = ({ data, onDataChange }: ContentFormProps) => {
 			<div className="flex items-center gap-2">
 				<Checkbox
 					id="sponsor"
-					onCheckedChange={isSponsor => onDataChange({ ...data, isSponsor })}
-					checked={data.isSponsor}
+					onCheckedChange={setIsSponsorSelected}
+					checked={isSponsorSelected}
 				/>
 				<Label htmlFor="sponsor">Sponsor / Event partner</Label>
 			</div>
 
-			{data.isSponsor && (
+			{isSponsorSelected && (
 				<div className="grid w-full max-w-sm items-center gap-2">
 					<Label htmlFor="picture">Sponsor / Event partner logo *</Label>
-					<Input id="picture" type="file" accept="image/*" />
+					<Input
+						id="picture"
+						type="file"
+						accept="image/*"
+						onChange={({ target }) =>
+							onDataChange({ ...data, sponsor: target.files?.[0] ?? null })
+						}
+					/>
 				</div>
 			)}
 
@@ -136,12 +143,6 @@ export const EventDataForm = ({ data, onDataChange }: ContentFormProps) => {
 					/>
 				</div>
 			</div>
-
-			<p>
-				City: {getCityName(data.city)}, Title: {data.title} , Is sponsor:{' '}
-				{data.isSponsor ? 'Yes' : 'No'}, Date: {data.date?.toLocaleDateString()}
-				, Time: {data.time}, Location: {data.location}
-			</p>
 		</section>
 	);
 };

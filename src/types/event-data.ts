@@ -1,7 +1,7 @@
 export interface EventData {
 	city: string;
 	title: string;
-	isSponsor: boolean | 'indeterminate';
+	sponsor: File | null;
 	location: string;
 	date: Date | undefined;
 	time: string;
