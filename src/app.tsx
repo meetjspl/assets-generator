@@ -2,6 +2,8 @@ import { EventDataForm } from '@/components/event-data-form.tsx';
 import { Footer } from '@/components/footer.tsx';
 import { useState } from 'react';
 
+import { Preview } from './components/preview';
+
 import type { EventData } from '@/types/event-data.ts';
 
 export const App = () => {
@@ -22,6 +24,7 @@ export const App = () => {
 				</h1>
 			</header>
 			<EventDataForm data={data} onDataChange={setData} />
+			<Preview />
 			<Footer />
 		</>
 	);

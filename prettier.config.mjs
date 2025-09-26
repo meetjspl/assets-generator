@@ -1,7 +1,8 @@
-import type { Config } from 'prettier';
-import type { PluginOptions } from 'prettier-plugin-tailwindcss';
-
-const config: Config & PluginOptions = {
+/**
+ * @type {import("prettier").Config}
+ * @type {import('prettier').Config & import('prettier-plugin-tailwindcss').PluginOptions}
+ */
+const config = {
 	arrowParens: 'avoid',
 	singleQuote: true,
 	useTabs: true,

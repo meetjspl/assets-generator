@@ -18,6 +18,7 @@
 		"@tailwindcss/vite": "4.1.13",
 		"class-variance-authority": "0.7.1",
 		"clsx": "2.1.1",
+		"html2canvas-pro": "1.5.11",
 		"date-fns": "4.1.0",
 		"lucide-react": "0.544.0",
 		"react": "19.1.1",
