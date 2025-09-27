@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { MeetjsLogo } from '@/meetjs-logo';
 import { format } from 'date-fns';
 import html2canvas from 'html2canvas-pro';
+import kebabCase from 'lodash/kebabCase';
 import { useRef } from 'react';
 
 import type { EventData } from '@/types/event-data.ts';
@@ -31,7 +32,7 @@ export const Preview = ({
 
 					const link = document.createElement('a');
 					link.href = dataURL;
-					link.download = `${title}.png`;
+					link.download = `${kebabCase(title)}.png`;
 					link.click();
 				}}
 			>
