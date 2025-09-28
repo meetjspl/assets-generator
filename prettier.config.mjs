@@ -17,8 +17,7 @@ export default {
 		'<TS_TYPES>^@/(.*)$',
 		'<TS_TYPES>^[./]',
 	],
-	tailwindFunctions: ['cn', 'cva'],
-	tailwindStylesheet: './src/index.css',
+	tailwindStylesheet: './src/assets/styles/global.css',
 	plugins: [
 		'@trivago/prettier-plugin-sort-imports',
 		'prettier-plugin-tailwindcss',

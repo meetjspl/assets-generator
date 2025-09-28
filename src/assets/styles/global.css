@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@plugin '@/lib/hero.ts';
+@source '../../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--color-blue: #219eab;
+	--color-green: #bcd35d;
+	--color-purple: #2b1932;
+
+	--font-sans: 'Montserrat', sans-serif;
+}

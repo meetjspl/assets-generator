@@ -14,7 +14,7 @@ export default defineConfig([
 		files: ['**/*.{ts,tsx}'],
 		extends: [
 			eslint.configs.recommended,
-			tseslint.configs.recommendedTypeCheckedOnly,
+			tseslint.configs.recommendedTypeChecked,
 			importX.flatConfigs.recommended,
 			importX.flatConfigs.typescript,
 			react.configs.flat.recommended,
@@ -32,6 +32,10 @@ export default defineConfig([
 		},
 		rules: {
 			'@typescript-eslint/consistent-type-imports': 'error',
+			'@typescript-eslint/no-misused-promises': [
+				'error',
+				{ checksVoidReturn: false },
+			],
 			'@typescript-eslint/no-non-null-assertion': 'error',
 			'@typescript-eslint/prefer-optional-chain': 'error',
 			'import-x/first': 'error',

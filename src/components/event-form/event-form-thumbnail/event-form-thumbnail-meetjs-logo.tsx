@@ -1,4 +1,4 @@
-export const MeetjsLogo = () => (
+export const EventFormThumbnailMeetjsLogo = () => (
 	<svg
 		aria-hidden
 		width="240"

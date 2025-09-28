@@ -1,0 +1,15 @@
+export const cities = [
+	'Białystok',
+	'Bielsko-Biała',
+	'Gdańsk',
+	'Katowice',
+	'Kielce',
+	'Kraków',
+	'Łódź',
+	'Lublin',
+	'Poznań',
+	'Warszawa',
+	'Wrocław',
+	'Szczecin',
+	'Toruń',
+];
