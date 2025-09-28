@@ -1,7 +1,7 @@
 export const MainLayoutHeader = () => (
 	<header>
 		<h1 className="border-divider border-b pb-2 text-center text-3xl font-semibold tracking-tight">
-			meet.js Assets Generator 2.0
+			Assets Generator 2.0
 		</h1>
 	</header>
 );

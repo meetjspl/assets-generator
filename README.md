@@ -1,1 +1,1 @@
-# meet.js Assets Generator 2.0
+# Assets Generator 2.0
