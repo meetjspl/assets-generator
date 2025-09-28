@@ -8,7 +8,10 @@ export const EventForm = () => {
 		useEventForm();
 
 	return (
-		<form onSubmit={handleThumbnailExport} className="flex gap-x-6">
+		<form
+			onSubmit={handleThumbnailExport}
+			className="flex flex-col gap-y-4 md:flex-row md:gap-x-6"
+		>
 			<div className="flex flex-1 flex-col gap-y-4">
 				<EventFormControls form={form} />
 				<EventFormExportButton isDisabled={!isCompleted} />

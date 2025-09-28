@@ -35,7 +35,7 @@ export const EventFormThumbnail = ({ form, ref }: EventFormThumbnailProps) => {
 	});
 
 	return (
-		<div className="border-primary overflow-hidden rounded-lg border-4">
+		<div className="border-primary overflow-auto rounded-lg border-4">
 			<article
 				ref={ref}
 				className="grid aspect-video w-240 grid-cols-4 bg-white"
