@@ -2,7 +2,7 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -15,14 +15,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tbody>
-
     <tr>
-
-      <td align="center" valign="top" width="14.28%"><a href="http://ssynowiec.dev"><img src="https://avatars.githubusercontent.com/u/52856724?v=4?s=100" width="100px;" alt="Stanisław Synowiec"/><br /><sub><b>Stanisław Synowiec</b></sub></a><br /><a href="https://github.com/meetjspl/assets-generator/commits?author=ssynowiec" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ssynowiec"><img src="https://avatars.githubusercontent.com/u/52856724?v=4?s=100" width="100px;" alt="Stanisław Synowiec"/><br /><sub><b>Stanisław Synowiec</b></sub></a><br /><a href="https://github.com/meetjspl/assets-generator/commits?author=ssynowiec" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://adipol.dev/"><img src="https://avatars.githubusercontent.com/u/27779154?v=4?s=100" width="100px;" alt="Adrian Polak"/><br /><sub><b>Adrian Polak</b></sub></a><br /><a href="https://github.com/meetjspl/assets-generator/commits?author=AdiPol1359" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
-
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
