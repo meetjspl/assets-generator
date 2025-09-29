@@ -1,26 +1,28 @@
 {
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 100,
-  "commit": false,
-  "commitType": "docs",
-  "commitConvention": "angular",
-  "contributors": [
-    {
-      "login": "ssynowiec",
-      "name": "Stanisław Synowiec",
-      "avatar_url": "https://avatars.githubusercontent.com/u/52856724?v=4",
-      "profile": "http://ssynowiec.dev",
-      "contributions": [
-        "code"
-      ]
-    }
-  ],
-  "contributorsPerLine": 7,
-  "skipCi": true,
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "projectName": "assets-generator",
-  "projectOwner": "meetjspl"
+	"projectName": "assets-generator",
+	"projectOwner": "meetjspl",
+	"repoType": "github",
+	"repoHost": "https://github.com",
+	"files": ["README.md"],
+	"imageSize": 100,
+	"commit": false,
+	"commitConvention": "angular",
+	"contributors": [
+		{
+			"login": "ssynowiec",
+			"name": "Stanisław Synowiec",
+			"avatar_url": "https://avatars.githubusercontent.com/u/52856724?v=4",
+			"profile": "https://github.com/ssynowiec",
+			"contributions": ["code"]
+		},
+		{
+			"login": "AdiPol1359",
+			"name": "Adrian Polak",
+			"avatar_url": "https://avatars.githubusercontent.com/u/27779154?v=4",
+			"profile": "https://adipol.dev/",
+			"contributions": ["code"]
+		}
+	],
+	"contributorsPerLine": 7,
+	"linkToUsage": false
 }
