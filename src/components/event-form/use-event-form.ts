@@ -10,7 +10,10 @@ import { eventFormSchema } from './event-form-schema';
 
 export const useEventForm = () => {
 	const thumbnailRef = useRef<HTMLDivElement>(null);
-	const form = useForm({ resolver: zodResolver(eventFormSchema) });
+	const form = useForm({
+		defaultValues: { withPartners: false },
+		resolver: zodResolver(eventFormSchema),
+	});
 
 	const isCompleted = form.formState.isValid;
 
