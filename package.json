@@ -1,6 +1,33 @@
 {
-	"name": "assets-generator-2.0",
-	"version": "0.0.0",
+	"name": "assets-generator",
+	"description": "meet.js event thumbnails assets generator",
+	"keywords": [
+		"meetjs",
+		"assets",
+		"generator",
+		"event",
+		"community",
+		"typescript"
+	],
+	"version": "2.0.0",
+	"homepage": "https://meetjspl.github.io/assets-generator/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/meetjspl/assets-generator.git"
+	},
+	"bugs": "https://github.com/meetjspl/assets-generator/issues",
+	"contributors": [
+		{
+			"name": "Stanisław Synowiec",
+			"email": "stanislaw@ssynowiec.pl",
+			"url": "http://ssynowiec.dev/"
+		},
+		{
+			"name": "Adrian Polak",
+			"email": "adrian.polak20@gmail.com",
+			"url": "https://adipol.dev/"
+		}
+	],
 	"type": "module",
 	"private": true,
 	"scripts": {
