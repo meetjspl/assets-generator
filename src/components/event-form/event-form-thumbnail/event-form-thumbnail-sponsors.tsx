@@ -12,6 +12,7 @@ export const EventFormThumbnailSponsors = ({
 			<h2 className="text-2xl font-extrabold uppercase">
 				{partnerType === 'event-partner' && 'Event Partner'}
 				{partnerType === 'sponsor' && 'Sponsor'}
+				{partners.length > 1 && 's'}
 			</h2>
 		)}
 		{partners.map(partner => (
