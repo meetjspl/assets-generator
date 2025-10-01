@@ -122,6 +122,7 @@ export const EventFormControls = ({
 						name="partnerType"
 						render={({ field: { onChange } }) => (
 							<RadioGroup
+								isRequired
 								label="Select partner type"
 								orientation="horizontal"
 								defaultValue="event-partner"
