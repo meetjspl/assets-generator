@@ -10,6 +10,7 @@ const eventFormBaseSchema = z.object({
 const eventFormPartnersSchema = z.object({
 	withPartners: z.literal(true),
 	partners: z.array(z.file()).min(1),
+	partnerType: z.enum(['event-partner', 'sponsor', 'only-logo']),
 });
 
 const eventFormNoPartnersSchema = z.object({

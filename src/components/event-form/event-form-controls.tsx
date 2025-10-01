@@ -1,4 +1,12 @@
-import { Checkbox, DatePicker, Input, Select, SelectItem } from '@heroui/react';
+import {
+	Checkbox,
+	DatePicker,
+	Input,
+	Radio,
+	RadioGroup,
+	Select,
+	SelectItem,
+} from '@heroui/react';
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
 import { Controller } from 'react-hook-form';
 
@@ -92,22 +100,40 @@ export const EventFormControls = ({
 				)}
 			/>
 			{withPartners && (
-				<Controller
-					control={control}
-					name="partners"
-					render={({ field: { onChange } }) => (
-						<Input
-							type="file"
-							accept="image/*"
-							multiple
-							label="Partners' logos"
-							isRequired
-							onChange={({ target: { files } }) =>
-								files && onChange([...files])
-							}
-						/>
-					)}
-				/>
+				<>
+					<Controller
+						control={control}
+						name="partners"
+						render={({ field: { onChange } }) => (
+							<Input
+								type="file"
+								accept="image/*"
+								multiple
+								label="Partners' logos"
+								isRequired
+								onChange={({ target: { files } }) =>
+									files && onChange([...files])
+								}
+							/>
+						)}
+					/>
+					<Controller
+						control={control}
+						name="partnerType"
+						render={({ field: { onChange } }) => (
+							<RadioGroup
+								label="Select partner type"
+								orientation="horizontal"
+								defaultValue="event-partner"
+								onChange={onChange}
+							>
+								<Radio value="event-partner">Event partner</Radio>
+								<Radio value="sponsor">Sponsor</Radio>
+								<Radio value="only-logo">Only logo</Radio>
+							</RadioGroup>
+						)}
+					/>
+				</>
 			)}
 		</>
 	);
