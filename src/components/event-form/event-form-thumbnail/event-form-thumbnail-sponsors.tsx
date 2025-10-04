@@ -1,6 +1,8 @@
+import type { PartnerType } from '@/components/event-form/partner-type.ts';
+
 interface EventFormThumbnailSponsorsProps {
 	readonly partners: File[];
-	readonly partnerType: 'event-partner' | 'sponsor' | 'only-logo';
+	readonly partnerType: PartnerType;
 }
 
 export const EventFormThumbnailSponsors = ({
