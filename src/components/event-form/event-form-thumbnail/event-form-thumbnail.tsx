@@ -49,7 +49,10 @@ export const EventFormThumbnail = ({ form, ref }: EventFormThumbnailProps) => {
 				<div className="relative col-span-1">
 					<EventFormThumbnailRightSectionDecorations />
 					{values.withPartners && values.partners?.length > 0 && (
-						<EventFormThumbnailSponsors partners={values.partners} />
+						<EventFormThumbnailSponsors
+							partners={values.partners}
+							partnerType={values.partnerType}
+						/>
 					)}
 				</div>
 			</article>

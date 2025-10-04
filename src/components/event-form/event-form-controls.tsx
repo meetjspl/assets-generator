@@ -1,7 +1,16 @@
-import { Checkbox, DatePicker, Input, Select, SelectItem } from '@heroui/react';
+import {
+	Checkbox,
+	DatePicker,
+	Input,
+	Radio,
+	RadioGroup,
+	Select,
+	SelectItem,
+} from '@heroui/react';
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
 import { Controller } from 'react-hook-form';
 
+import { PartnerTypeEnum } from '@/components/event-form/partner-type.ts';
 import { cities } from '@/data/cities';
 
 import type { UseFormReturn } from 'react-hook-form';
@@ -92,22 +101,45 @@ export const EventFormControls = ({
 				)}
 			/>
 			{withPartners && (
-				<Controller
-					control={control}
-					name="partners"
-					render={({ field: { onChange } }) => (
-						<Input
-							type="file"
-							accept="image/*"
-							multiple
-							label="Partners' logos"
-							isRequired
-							onChange={({ target: { files } }) =>
-								files && onChange([...files])
-							}
-						/>
-					)}
-				/>
+				<>
+					<Controller
+						control={control}
+						name="partners"
+						render={({ field: { onChange } }) => (
+							<Input
+								type="file"
+								accept="image/*"
+								multiple
+								label="Partners' logos"
+								isRequired
+								onChange={({ target: { files } }) =>
+									files && onChange([...files])
+								}
+							/>
+						)}
+					/>
+					<Controller
+						control={control}
+						name="partnerType"
+						render={({
+							field: { onChange, value = PartnerTypeEnum.EventPartner },
+						}) => (
+							<RadioGroup
+								isRequired
+								label="Select partner type"
+								orientation="horizontal"
+								value={value}
+								onChange={onChange}
+							>
+								<Radio value={PartnerTypeEnum.EventPartner}>
+									Event partner
+								</Radio>
+								<Radio value={PartnerTypeEnum.Sponsor}>Sponsor</Radio>
+								<Radio value={PartnerTypeEnum.OnlyLogo}>Only logo</Radio>
+							</RadioGroup>
+						)}
+					/>
+				</>
 			)}
 		</>
 	);
