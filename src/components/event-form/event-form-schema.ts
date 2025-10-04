@@ -1,5 +1,7 @@
 import { z } from 'zod/v4';
 
+import { PartnerTypeEnum } from '@/components/event-form/partner-type.ts';
+
 const eventFormBaseSchema = z.object({
 	city: z.string().min(1),
 	title: z.string().min(1),
@@ -10,7 +12,7 @@ const eventFormBaseSchema = z.object({
 const eventFormPartnersSchema = z.object({
 	withPartners: z.literal(true),
 	partners: z.array(z.file()).min(1),
-	partnerType: z.enum(['event-partner', 'sponsor', 'only-logo']),
+	partnerType: z.enum(PartnerTypeEnum),
 });
 
 const eventFormNoPartnersSchema = z.object({
