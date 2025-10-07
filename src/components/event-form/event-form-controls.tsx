@@ -10,7 +10,7 @@ import {
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
 import { Controller } from 'react-hook-form';
 
-import { PartnerTypeEnum } from '@/components/event-form/partner-type.ts';
+import { SupporterTypeEnum } from '@/components/event-form/supporter-type.ts';
 import { cities } from '@/data/cities';
 
 import type { UseFormReturn } from 'react-hook-form';
@@ -122,7 +122,7 @@ export const EventFormControls = ({
 						control={control}
 						name="partnerType"
 						render={({
-							field: { onChange, value = PartnerTypeEnum.EventPartner },
+							field: { onChange, value = SupporterTypeEnum.EventPartner },
 						}) => (
 							<RadioGroup
 								isRequired
@@ -131,11 +131,11 @@ export const EventFormControls = ({
 								value={value}
 								onChange={onChange}
 							>
-								<Radio value={PartnerTypeEnum.EventPartner}>
+								<Radio value={SupporterTypeEnum.EventPartner}>
 									Event partner
 								</Radio>
-								<Radio value={PartnerTypeEnum.Sponsor}>Sponsor</Radio>
-								<Radio value={PartnerTypeEnum.OnlyLogo}>Only logo</Radio>
+								<Radio value={SupporterTypeEnum.Sponsor}>Sponsor</Radio>
+								<Radio value={SupporterTypeEnum.OnlyLogo}>Only logo</Radio>
 							</RadioGroup>
 						)}
 					/>
