@@ -11,7 +11,7 @@ import { eventFormSchema } from './event-form-schema';
 export const useEventForm = () => {
 	const thumbnailRef = useRef<HTMLDivElement>(null);
 	const form = useForm({
-		defaultValues: { withPartners: false },
+		defaultValues: { withSupporters: false },
 		resolver: zodResolver(eventFormSchema),
 	});
 

@@ -9,21 +9,21 @@ const eventFormBaseSchema = z.object({
 	date: z.date(),
 });
 
-const eventFormPartnersSchema = z.object({
-	withPartners: z.literal(true),
-	partners: z.array(z.file()).min(1),
-	partnerType: z.enum(SupporterTypeEnum),
+const eventFormSupportersSchema = z.object({
+	withSupporters: z.literal(true),
+	supporters: z.array(z.file()).min(1),
+	supporterType: z.enum(SupporterTypeEnum),
 });
 
-const eventFormNoPartnersSchema = z.object({
-	withPartners: z.literal(false),
+const eventFormNoSupportersSchema = z.object({
+	withSupporters: z.literal(false),
 });
 
 export const eventFormSchema = z.intersection(
 	eventFormBaseSchema,
-	z.discriminatedUnion('withPartners', [
-		eventFormPartnersSchema,
-		eventFormNoPartnersSchema,
+	z.discriminatedUnion('withSupporters', [
+		eventFormSupportersSchema,
+		eventFormNoSupportersSchema,
 	]),
 );
 

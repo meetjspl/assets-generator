@@ -24,7 +24,7 @@ interface EventFormControlsProps {
 export const EventFormControls = ({
 	form: { control, setValue, watch },
 }: EventFormControlsProps) => {
-	const withPartners = watch('withPartners');
+	const withSupporters = watch('withSupporters');
 
 	return (
 		<>
@@ -93,18 +93,18 @@ export const EventFormControls = ({
 			/>
 			<Controller
 				control={control}
-				name="withPartners"
+				name="withSupporters"
 				render={({ field: { value, onChange, ...field } }) => (
 					<Checkbox isSelected={value} onValueChange={onChange} {...field}>
 						Partner
 					</Checkbox>
 				)}
 			/>
-			{withPartners && (
+			{withSupporters && (
 				<>
 					<Controller
 						control={control}
-						name="partners"
+						name="supporters"
 						render={({ field: { onChange } }) => (
 							<Input
 								type="file"
@@ -120,7 +120,7 @@ export const EventFormControls = ({
 					/>
 					<Controller
 						control={control}
-						name="partnerType"
+						name="supporterType"
 						render={({
 							field: { onChange, value = SupporterTypeEnum.EventPartner },
 						}) => (
