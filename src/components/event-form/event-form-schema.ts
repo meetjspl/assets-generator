@@ -1,6 +1,6 @@
 import { z } from 'zod/v4';
 
-import { SupporterTypeEnum } from '@/components/event-form/supporter-type.ts';
+import { SupporterType } from '@/components/event-form/supporter-type.ts';
 
 const eventFormBaseSchema = z.object({
 	city: z.string().min(1),
@@ -12,7 +12,7 @@ const eventFormBaseSchema = z.object({
 const eventFormSupportersSchema = z.object({
 	withSupporters: z.literal(true),
 	supporters: z.array(z.file()).min(1),
-	supporterType: z.enum(SupporterTypeEnum),
+	supporterType: z.enum(SupporterType),
 });
 
 const eventFormNoSupportersSchema = z.object({

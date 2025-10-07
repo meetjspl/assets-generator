@@ -1,4 +1,4 @@
-import type { SupporterType } from '@/components/event-form/supporter-type.ts';
+import { SupporterType } from '@/components/event-form/supporter-type.ts';
 
 interface EventFormThumbnailSupportersProps {
 	readonly supporters: File[];
@@ -10,10 +10,10 @@ export const EventFormThumbnailSupporters = ({
 	supporterType,
 }: EventFormThumbnailSupportersProps) => (
 	<div className="relative flex h-full flex-col items-center justify-center bg-white">
-		{supporterType !== 'only-logo' && (
+		{supporterType !== SupporterType.OnlyLogo && (
 			<h2 className="text-2xl font-extrabold uppercase">
-				{supporterType === 'event-partner' && 'Event Partner'}
-				{supporterType === 'sponsor' && 'Sponsor'}
+				{supporterType === SupporterType.EventPartner && 'Event Partner'}
+				{supporterType === SupporterType.Sponsor && 'Sponsor'}
 				{supporters.length > 1 && 's'}
 			</h2>
 		)}
