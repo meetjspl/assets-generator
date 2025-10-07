@@ -1,14 +1,14 @@
 import type { PartnerType } from '@/components/event-form/partner-type.ts';
 
-interface EventFormThumbnailSponsorsProps {
+interface EventFormThumbnailSupportersProps {
 	readonly partners: File[];
 	readonly partnerType: PartnerType;
 }
 
-export const EventFormThumbnailSponsors = ({
+export const EventFormThumbnailSupporters = ({
 	partners,
 	partnerType,
-}: EventFormThumbnailSponsorsProps) => (
+}: EventFormThumbnailSupportersProps) => (
 	<div className="relative flex h-full flex-col items-center justify-center bg-white">
 		{partnerType !== 'only-logo' && (
 			<h2 className="text-2xl font-extrabold uppercase">

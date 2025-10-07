@@ -2,7 +2,7 @@ import { EventFormThumbnailDetails } from '@/components/event-form/event-form-th
 import { EventFormThumbnailLeftSectionDecorations } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-left-section-decorations.tsx';
 import { EventFormThumbnailMeetjsLogo } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-meetjs-logo.tsx';
 import { EventFormThumbnailRightSectionDecorations } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-right-section-decorations.tsx';
-import { EventFormThumbnailSponsors } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-sponsors.tsx';
+import { EventFormThumbnailSupporters } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-supporters.tsx';
 import { EventFormThumbnailTitle } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-title.tsx';
 import { formatDate, formatTime } from '@/lib/date-formatter';
 
@@ -49,7 +49,7 @@ export const EventFormThumbnail = ({ form, ref }: EventFormThumbnailProps) => {
 				<div className="relative col-span-1">
 					<EventFormThumbnailRightSectionDecorations />
 					{values.withPartners && values.partners?.length > 0 && (
-						<EventFormThumbnailSponsors
+						<EventFormThumbnailSupporters
 							partners={values.partners}
 							partnerType={values.partnerType}
 						/>
