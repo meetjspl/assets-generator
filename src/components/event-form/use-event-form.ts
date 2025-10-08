@@ -4,6 +4,7 @@ import kebabCase from 'lodash/kebabCase';
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { Supporter } from '@/components/event-form/event-form-types.ts';
 import { downloadResource } from '@/lib/download-resource';
 
 import { eventFormSchema } from './event-form-schema';
@@ -11,7 +12,7 @@ import { eventFormSchema } from './event-form-schema';
 export const useEventForm = () => {
 	const thumbnailRef = useRef<HTMLDivElement>(null);
 	const form = useForm({
-		defaultValues: { withSupporters: false },
+		defaultValues: { withSupporters: true, supporter: Supporter.Sponsor },
 		resolver: zodResolver(eventFormSchema),
 	});
 
