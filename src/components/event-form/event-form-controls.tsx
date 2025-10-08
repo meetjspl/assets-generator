@@ -8,6 +8,7 @@ import {
 	SelectItem,
 } from '@heroui/react';
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
+import { Activity } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { Supporter } from '@/components/event-form/event-form-types';
@@ -100,44 +101,42 @@ export const EventFormControls = ({
 					</Checkbox>
 				)}
 			/>
-			{withSupporters && (
-				<>
-					<Controller
-						control={control}
-						name="supporterImages"
-						render={({ field: { onChange } }) => (
-							<Input
-								type="file"
-								accept="image/*"
-								multiple
-								label="Supporters' logos"
-								isRequired
-								onChange={({ target: { files } }) =>
-									files && onChange([...files])
-								}
-							/>
-						)}
-					/>
-					<Controller
-						control={control}
-						name="supporter"
-						render={({ field: { value, onChange, ...field } }) => (
-							<RadioGroup
-								isRequired
-								label="Select supporter type"
-								orientation="horizontal"
-								value={value === null ? '' : value}
-								onValueChange={value => onChange(value === '' ? null : value)}
-								{...field}
-							>
-								<Radio value={Supporter.EventPartner}>Event partner</Radio>
-								<Radio value={Supporter.Sponsor}>Sponsor</Radio>
-								<Radio value="">Logo only</Radio>
-							</RadioGroup>
-						)}
-					/>
-				</>
-			)}
+			<Activity mode={withSupporters ? 'visible' : 'hidden'}>
+				<Controller
+					control={control}
+					name="supporterImages"
+					render={({ field: { onChange } }) => (
+						<Input
+							type="file"
+							accept="image/*"
+							multiple
+							label="Supporters' logos"
+							isRequired
+							onChange={({ target: { files } }) =>
+								files && onChange([...files])
+							}
+						/>
+					)}
+				/>
+				<Controller
+					control={control}
+					name="supporter"
+					render={({ field: { value, onChange, ...field } }) => (
+						<RadioGroup
+							isRequired
+							label="Select supporter type"
+							orientation="horizontal"
+							value={value === null ? '' : value}
+							onValueChange={value => onChange(value === '' ? null : value)}
+							{...field}
+						>
+							<Radio value={Supporter.EventPartner}>Event partner</Radio>
+							<Radio value={Supporter.Sponsor}>Sponsor</Radio>
+							<Radio value="">Logo only</Radio>
+						</RadioGroup>
+					)}
+				/>
+			</Activity>
 		</>
 	);
 };
