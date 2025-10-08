@@ -1,6 +1,6 @@
 import { z } from 'zod/v4';
 
-import { SupporterType } from '@/components/event-form/supporter-type.ts';
+import { Supporter } from '@/components/event-form/event-form-types';
 
 const eventFormBaseSchema = z.object({
 	city: z.string().min(1),
@@ -11,8 +11,8 @@ const eventFormBaseSchema = z.object({
 
 const eventFormSupportersSchema = z.object({
 	withSupporters: z.literal(true),
-	supporters: z.array(z.file()).min(1),
-	supporterType: z.enum(SupporterType),
+	supporter: z.enum(Supporter).nullable(),
+	supporterImages: z.array(z.file()).min(1),
 });
 
 const eventFormNoSupportersSchema = z.object({

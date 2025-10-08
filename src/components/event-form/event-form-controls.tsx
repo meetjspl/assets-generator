@@ -10,7 +10,7 @@ import {
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
 import { Controller } from 'react-hook-form';
 
-import { SupporterType } from '@/components/event-form/supporter-type.ts';
+import { Supporter } from '@/components/event-form/event-form-types';
 import { cities } from '@/data/cities';
 
 import type { UseFormReturn } from 'react-hook-form';
@@ -96,7 +96,7 @@ export const EventFormControls = ({
 				name="withSupporters"
 				render={({ field: { value, onChange, ...field } }) => (
 					<Checkbox isSelected={value} onValueChange={onChange} {...field}>
-						Partner
+						Supporter
 					</Checkbox>
 				)}
 			/>
@@ -104,13 +104,13 @@ export const EventFormControls = ({
 				<>
 					<Controller
 						control={control}
-						name="supporters"
+						name="supporterImages"
 						render={({ field: { onChange } }) => (
 							<Input
 								type="file"
 								accept="image/*"
 								multiple
-								label="Partners' logos"
+								label="Supporters' logos"
 								isRequired
 								onChange={({ target: { files } }) =>
 									files && onChange([...files])
@@ -120,20 +120,19 @@ export const EventFormControls = ({
 					/>
 					<Controller
 						control={control}
-						name="supporterType"
-						render={({
-							field: { onChange, value = SupporterType.EventPartner },
-						}) => (
+						name="supporter"
+						render={({ field: { value, onChange, ...field } }) => (
 							<RadioGroup
 								isRequired
-								label="Select partner type"
+								label="Select supporter type"
 								orientation="horizontal"
-								value={value}
-								onChange={onChange}
+								value={value === null ? '' : value}
+								onValueChange={value => onChange(value === '' ? null : value)}
+								{...field}
 							>
-								<Radio value={SupporterType.EventPartner}>Event partner</Radio>
-								<Radio value={SupporterType.Sponsor}>Sponsor</Radio>
-								<Radio value={SupporterType.OnlyLogo}>Only logo</Radio>
+								<Radio value={Supporter.EventPartner}>Event partner</Radio>
+								<Radio value={Supporter.Sponsor}>Sponsor</Radio>
+								<Radio value="">Logo only</Radio>
 							</RadioGroup>
 						)}
 					/>

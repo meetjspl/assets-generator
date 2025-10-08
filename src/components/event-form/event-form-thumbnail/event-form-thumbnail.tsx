@@ -48,12 +48,14 @@ export const EventFormThumbnail = ({ form, ref }: EventFormThumbnailProps) => {
 				</div>
 				<div className="relative col-span-1">
 					<EventFormThumbnailRightSectionDecorations />
-					{values.withSupporters && values.supporters?.length > 0 && (
-						<EventFormThumbnailSupporters
-							supporters={values.supporters}
-							supporterType={values.supporterType}
-						/>
-					)}
+					{values.withSupporters &&
+						values.supporter !== undefined &&
+						values.supporterImages?.length > 0 && (
+							<EventFormThumbnailSupporters
+								supporter={values.supporter}
+								supporterImages={values.supporterImages}
+							/>
+						)}
 				</div>
 			</article>
 		</div>

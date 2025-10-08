@@ -1,27 +1,27 @@
-import { SupporterType } from '@/components/event-form/supporter-type.ts';
+import { Supporter } from '@/components/event-form/event-form-types';
 
 interface EventFormThumbnailSupportersProps {
-	readonly supporters: File[];
-	readonly supporterType: SupporterType;
+	readonly supporter: Supporter | null;
+	readonly supporterImages: File[];
 }
 
 export const EventFormThumbnailSupporters = ({
-	supporters,
-	supporterType,
+	supporter,
+	supporterImages,
 }: EventFormThumbnailSupportersProps) => (
 	<div className="relative flex h-full flex-col items-center justify-center bg-white">
-		{supporterType !== SupporterType.OnlyLogo && (
+		{supporter !== null && (
 			<h2 className="text-2xl font-extrabold uppercase">
-				{supporterType === SupporterType.EventPartner && 'Event Partner'}
-				{supporterType === SupporterType.Sponsor && 'Sponsor'}
-				{supporters.length > 1 && 's'}
+				{supporter === Supporter.EventPartner && 'Event Partner'}
+				{supporter === Supporter.Sponsor && 'Sponsor'}
+				{supporterImages.length > 1 && 's'}
 			</h2>
 		)}
-		{supporters.map(partner => (
+		{supporterImages.map(supporter => (
 			<img
-				key={partner.name}
-				alt={partner.name}
-				src={URL.createObjectURL(partner)}
+				key={supporter.name}
+				alt={supporter.name}
+				src={URL.createObjectURL(supporter)}
 				className="px-10"
 			/>
 		))}
