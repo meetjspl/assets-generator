@@ -1,7 +1,16 @@
-import { Checkbox, DatePicker, Input, Select, SelectItem } from '@heroui/react';
+import {
+	Checkbox,
+	DatePicker,
+	Input,
+	Radio,
+	RadioGroup,
+	Select,
+	SelectItem,
+} from '@heroui/react';
 import { fromDate, getLocalTimeZone } from '@internationalized/date';
 import { Controller } from 'react-hook-form';
 
+import { Supporter } from '@/components/event-form/event-form-types';
 import { cities } from '@/data/cities';
 
 import type { UseFormReturn } from 'react-hook-form';
@@ -15,7 +24,7 @@ interface EventFormControlsProps {
 export const EventFormControls = ({
 	form: { control, setValue, watch },
 }: EventFormControlsProps) => {
-	const withPartners = watch('withPartners');
+	const withSupporters = watch('withSupporters');
 
 	return (
 		<>
@@ -84,30 +93,50 @@ export const EventFormControls = ({
 			/>
 			<Controller
 				control={control}
-				name="withPartners"
+				name="withSupporters"
 				render={({ field: { value, onChange, ...field } }) => (
 					<Checkbox isSelected={value} onValueChange={onChange} {...field}>
-						Partner
+						Supporter
 					</Checkbox>
 				)}
 			/>
-			{withPartners && (
-				<Controller
-					control={control}
-					name="partners"
-					render={({ field: { onChange } }) => (
-						<Input
-							type="file"
-							accept="image/*"
-							multiple
-							label="Partners' logos"
-							isRequired
-							onChange={({ target: { files } }) =>
-								files && onChange([...files])
-							}
-						/>
-					)}
-				/>
+			{withSupporters && (
+				<>
+					<Controller
+						control={control}
+						name="supporterImages"
+						render={({ field: { onChange } }) => (
+							<Input
+								type="file"
+								accept="image/*"
+								multiple
+								label="Supporters' logos"
+								isRequired
+								onChange={({ target: { files } }) =>
+									files && onChange([...files])
+								}
+							/>
+						)}
+					/>
+					<Controller
+						control={control}
+						name="supporter"
+						render={({ field: { value, onChange, ...field } }) => (
+							<RadioGroup
+								isRequired
+								label="Select supporter type"
+								orientation="horizontal"
+								value={value === null ? '' : value}
+								onValueChange={value => onChange(value === '' ? null : value)}
+								{...field}
+							>
+								<Radio value={Supporter.EventPartner}>Event partner</Radio>
+								<Radio value={Supporter.Sponsor}>Sponsor</Radio>
+								<Radio value="">Logo only</Radio>
+							</RadioGroup>
+						)}
+					/>
+				</>
 			)}
 		</>
 	);

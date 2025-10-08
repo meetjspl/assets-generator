@@ -2,7 +2,7 @@ import { EventFormThumbnailDetails } from '@/components/event-form/event-form-th
 import { EventFormThumbnailLeftSectionDecorations } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-left-section-decorations.tsx';
 import { EventFormThumbnailMeetjsLogo } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-meetjs-logo.tsx';
 import { EventFormThumbnailRightSectionDecorations } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-right-section-decorations.tsx';
-import { EventFormThumbnailSponsors } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-sponsors.tsx';
+import { EventFormThumbnailSupporters } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-supporters.tsx';
 import { EventFormThumbnailTitle } from '@/components/event-form/event-form-thumbnail/event-form-thumbnail-title.tsx';
 import { formatDate, formatTime } from '@/lib/date-formatter';
 
@@ -48,9 +48,14 @@ export const EventFormThumbnail = ({ form, ref }: EventFormThumbnailProps) => {
 				</div>
 				<div className="relative col-span-1">
 					<EventFormThumbnailRightSectionDecorations />
-					{values.withPartners && values.partners?.length > 0 && (
-						<EventFormThumbnailSponsors partners={values.partners} />
-					)}
+					{values.withSupporters &&
+						values.supporter !== undefined &&
+						values.supporterImages?.length > 0 && (
+							<EventFormThumbnailSupporters
+								supporter={values.supporter}
+								supporterImages={values.supporterImages}
+							/>
+						)}
 				</div>
 			</article>
 		</div>

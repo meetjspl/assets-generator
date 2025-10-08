@@ -1,5 +1,7 @@
 import { z } from 'zod/v4';
 
+import { Supporter } from '@/components/event-form/event-form-types';
+
 const eventFormBaseSchema = z.object({
 	city: z.string().min(1),
 	title: z.string().min(1),
@@ -7,20 +9,21 @@ const eventFormBaseSchema = z.object({
 	date: z.date(),
 });
 
-const eventFormPartnersSchema = z.object({
-	withPartners: z.literal(true),
-	partners: z.array(z.file()).min(1),
+const eventFormSupportersSchema = z.object({
+	withSupporters: z.literal(true),
+	supporter: z.enum(Supporter).nullable(),
+	supporterImages: z.array(z.file()).min(1),
 });
 
-const eventFormNoPartnersSchema = z.object({
-	withPartners: z.literal(false),
+const eventFormNoSupportersSchema = z.object({
+	withSupporters: z.literal(false),
 });
 
 export const eventFormSchema = z.intersection(
 	eventFormBaseSchema,
-	z.discriminatedUnion('withPartners', [
-		eventFormPartnersSchema,
-		eventFormNoPartnersSchema,
+	z.discriminatedUnion('withSupporters', [
+		eventFormSupportersSchema,
+		eventFormNoSupportersSchema,
 	]),
 );
 
