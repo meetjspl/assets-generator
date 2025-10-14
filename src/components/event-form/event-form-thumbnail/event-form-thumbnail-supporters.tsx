@@ -1,3 +1,5 @@
+import { Activity } from 'react';
+
 import { Supporter } from '@/components/event-form/event-form-types';
 
 interface EventFormThumbnailSupportersProps {
@@ -10,13 +12,13 @@ export const EventFormThumbnailSupporters = ({
 	supporterImages,
 }: EventFormThumbnailSupportersProps) => (
 	<div className="relative flex h-full flex-col items-center justify-center bg-white">
-		{supporter !== null && (
+		<Activity mode={supporter !== null ? 'visible' : 'hidden'}>
 			<h2 className="text-2xl font-extrabold uppercase">
 				{supporter === Supporter.EventPartner && 'Event Partner'}
 				{supporter === Supporter.Sponsor && 'Sponsor'}
 				{supporterImages.length > 1 && 's'}
 			</h2>
-		)}
+		</Activity>
 		{supporterImages.map(supporter => (
 			<img
 				key={supporter.name}
