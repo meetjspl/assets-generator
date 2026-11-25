@@ -1,11 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import html2canvas from 'html2canvas-pro';
-import kebabCase from 'lodash/kebabCase';
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Supporter } from '@/components/event-form/event-form-types.ts';
-import { downloadResource } from '@/lib/download-resource';
+import { exportElementAsImage } from '@/lib/export-element-as-image';
 
 import { eventFormSchema } from './event-form-schema';
 
@@ -21,10 +19,7 @@ export const useEventForm = () => {
 	const handleThumbnailExport = form.handleSubmit(async ({ title }) => {
 		if (!thumbnailRef.current) return;
 
-		const canvas = await html2canvas(thumbnailRef.current, { scale: 2 });
-		const dataUrl = canvas.toDataURL('image/webp');
-
-		downloadResource(dataUrl, { name: kebabCase(title), extension: 'webp' });
+		await exportElementAsImage(thumbnailRef.current, title);
 	});
 
 	return { isCompleted, form, thumbnailRef, handleThumbnailExport };
